@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import Spinner from '-!svg-react-loader!../../styles/spinner.svg';
+import { ReactComponent as Spinner } from '../../styles/spinner.svg';
 
 function Loader({ state }: { state: { loader: boolean } }) {
   return (
