@@ -1,5 +1,5 @@
 
-import * as _ from 'lodash';
+import { cloneDeep, filter, orderBy } from 'lodash';
 
 const initialState = {
   loader: false,
@@ -27,37 +27,37 @@ export default function AppReducer(state = initialState, action: { type: string,
   }
 
   if (action.type === 'ADD_NEW_PERSON') {
-    return _.cloneDeep(state);
+    return cloneDeep(state);
   }
 
   if (action.type === 'DELETE_PERSON') {
-    return _.cloneDeep(state);
+    return cloneDeep(state);
   }
 
   if (action.type === 'UPDATE_PERSON') {
-    return _.cloneDeep(state);
+    return cloneDeep(state);
   }
 
   if (action.type === 'LOADER') {
-    const _state = _.cloneDeep(state);
+    const _state = cloneDeep(state);
     _state.loader = action.payload;
     return _state;
   }
 
   if (action.type === 'SORT') {
-    const _state = _.cloneDeep(state);
-    _state.filter.people = _.orderBy(_state.filter.people, ['id'], [action.payload]);
+    const _state = cloneDeep(state);
+    _state.filter.people = orderBy(_state.filter.people, ['id'], [action.payload]);
     return _state;
   }
 
   if (action.type === 'FILTER') {
-    const _state: any = _.cloneDeep(state);
+    const _state: any = cloneDeep(state);
     _state.filter.match = action.payload;
-    _state.filter.people = _.filter(_state.people, (o) => {
+    _state.filter.people = filter(_state.people, (o) => {
       return o.firstName.toLowerCase().indexOf(action.payload) > -1;
     });
     return _state;
   }
 
-  return _.cloneDeep(state);
+  return cloneDeep(state);
 }
