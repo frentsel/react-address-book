@@ -54,7 +54,7 @@ export default function AppReducer(state = initialState, action: { type: string,
     const _state: any = cloneDeep(state);
     _state.filter.match = action.payload;
     _state.filter.people = filter(_state.people, (o) => {
-      return o.firstName.toLowerCase().indexOf(action.payload) > -1;
+      return o.firstName.toLowerCase().indexOf(action.payload) > -1 || o.lastName.toLowerCase().indexOf(action.payload) > -1;
     });
     return _state;
   }

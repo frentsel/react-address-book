@@ -39,8 +39,8 @@ function List({ data, onDeletePerson }: any) {
         <li key={key}>
           name: {person.firstName} {person.lastName} <br />
           phone: {person.phone} <br />
-          <NavLink to={'/person/' + person.id}>Edit</NavLink>
-          <button onClick={() => onDelete(person)}>Delete</button>
+          <NavLink className="btn" to={'/person/' + person.id}>Edit</NavLink>
+          <button className="btn" onClick={() => onDelete(person)}>Delete</button>
         </li>
       ))}
     </ul>

@@ -40,7 +40,7 @@ function Form({ person, onFormSubmit }: { person: any, onFormSubmit: React.FormE
       <Field label="Name" name="firstName" defaultValue={get(person, 'firstName', '')} onChange={handleChange} />
       <Field label="Lastname" name="lastName" defaultValue={get(person, 'lastName', '')} onChange={handleChange} />
       <Field label="Phone" name="phone" defaultValue={get(person, 'phone', '')} onChange={handleChange} />
-      <button type='submit'>Save</button>
+      <button className="btn" type='submit'>Save</button>
     </form>
   );
 }

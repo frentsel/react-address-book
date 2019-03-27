@@ -40,10 +40,16 @@ p:not(:last-child) {
   margin-right: 15px;
 }
 
-button {
-  padding: 3px 10px;
+.btn {
   border: 1px solid gray;
-  margin: 0 2px;
+  font-size: 14px;
+  padding: 1px 10px;
+  background: white;
+  text-decoration: none;
+  color: gray;
+  font-family: inherit;
+  display: inline-block;
+  margin-right: 2px;
   cursor: pointer;
   transition: .2s;
 
