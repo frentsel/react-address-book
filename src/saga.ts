@@ -24,7 +24,7 @@ export function* watchGetPeople() {
   yield takeEvery('GET_PEOPLE_ASYNC', interceptor(getAllPeople));
 }
 
-export function* getPersonById({ payload }: any) {
+export function* getPersonById({ payload }: { payload: string }) {
   const { data } = yield call(axios.get, '//localhost:3000/people/' + payload);
   yield delay(200);
   yield put({ type: 'GET_PERSON_BY_ID', payload: data });
@@ -34,7 +34,7 @@ export function* watchGetPersonById() {
   yield takeEvery('GET_PERSON_BY_ID_ASYNC', interceptor(getPersonById));
 }
 
-export function* addNewPerson({ payload }: any) {
+export function* addNewPerson({ payload }: { payload: object }) {
   const { data } = yield call(axios.post, '//localhost:3000/people', payload);
   yield delay(200);
   yield put({ type: 'ADD_NEW_PERSON', payload: data });
@@ -45,7 +45,7 @@ export function* watchAddNewPerson() {
   yield takeEvery('ADD_NEW_PERSON_ASYNC', interceptor(addNewPerson));
 }
 
-export function* deletePerson({ payload }: any) {
+export function* deletePerson({ payload }: { payload: { id: number } }) {
   yield call(axios.delete, '//localhost:3000/people/' + payload.id);
   yield delay(200);
   yield put({ type: 'DELETE_PERSON', payload });
@@ -57,7 +57,7 @@ export function* watchDeletePerson() {
   yield takeEvery('DELETE_PERSON_ASYNC', interceptor(deletePerson));
 }
 
-export function* updatePerson({ payload }: any) {
+export function* updatePerson({ payload }: { payload: { id: number } }) {
   const { data } = yield call(axios.put, '//localhost:3000/people/' + payload.id, payload);
   yield delay(200);
   yield put({ type: 'UPDATE_PERSON', payload: data });

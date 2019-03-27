@@ -28,7 +28,7 @@ class UserList extends Component<any> {
   }
 }
 
-function List({ data, onDeletePerson }: any) {
+function List({ data, onDeletePerson }: { data: object[], onDeletePerson: any }) {
   const onDelete = (person: object) => {
     const status: boolean = confirm('Are you sure about that!');
     if (status) onDeletePerson(person);
@@ -48,7 +48,7 @@ function List({ data, onDeletePerson }: any) {
 }
 
 export default connect(
-  (state: any) => ({ state: state.app }),
+  (state: { app: object }) => ({ state: state.app }),
   (dispatch) => ({
     onSort: (event: InputEvent) => dispatch({ type: 'SORT', payload: event.target.value }),
     onFilter: (event: InputEvent) => dispatch({ type: 'FILTER', payload: event.target.value }),
